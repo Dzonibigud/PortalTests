@@ -1,8 +1,5 @@
 import dev.failsafe.internal.util.Assert;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,10 +16,12 @@ import java.time.Duration;
 public class PortalTest1 {
         WebDriver driver;
         private static final String BASE_URL = "https://stage.portal.acolin.com/sign-in";
+        private static int n = 0;
 
         @BeforeEach
         void setUp () {
             driver = new ChromeDriver();
+
 
         }
 
@@ -39,8 +38,10 @@ public class PortalTest1 {
             Assertions.assertEquals(BASE_URL, curentUrl);
 
         }
-        @Test
+        @RepeatedTest(17)
         void openTabs() throws InterruptedException {
+            n++;
+            System.out.println("Running test number: " + n);
             Actions action = new Actions(driver);
             WebDriverWait longWait = new WebDriverWait(driver, Duration.ofSeconds(5));
             driver.get(BASE_URL);
@@ -57,14 +58,15 @@ public class PortalTest1 {
             Thread.sleep(1000);
             WebElement signInButton = driver.findElement(By.xpath("//button[text()='Sign In']"));
             signInButton.click();
-            Thread.sleep(19000);
+            Thread.sleep(4000);
             List<WebElement> tabs = driver.findElements(By.xpath("//dd[@class ='acl-menu-list__item']"));
-            WebElement test = tabs.get(14).findElement(By.xpath(".//a"));
-            action.moveToElement(tabs.get(14).findElement(By.linkText(tabs.get(14).getText()))).click().perform();
+            WebElement test = tabs.get(n-1).findElement(By.xpath(".//a"));
+            action.moveToElement(tabs.get(n-1).findElement(By.linkText(tabs.get(n-1).getText()))).click().perform();
             Thread.sleep(2000);
             Assertions.assertTrue(driver.getCurrentUrl().equals(test.getAttribute("href")));
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         }
 }
+
 
 
