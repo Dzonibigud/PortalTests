@@ -140,6 +140,50 @@ public class PortalTest1 {
             logo.click();
             Assertions.assertEquals("https://stage.portal.acolin.com/home", driver.getCurrentUrl());
         }
+
+        @RepeatedTest(4) //Testing of filters Fund Name, Isin, Net Asset Value etc. if they function
+        void filterFundsTest() throws InterruptedException {
+            n+=4;
+            driver.get(BASE_URL);
+            driver.manage().window().maximize();
+            Actions action = new Actions(driver);
+            logIn();
+            WebElement funds = driver.findElement(By.xpath("//a[text() = 'Funds']"));
+            funds.click();
+            Thread.sleep(2000);
+
+            List<WebElement> shareClassFundName = driver.findElements(By.xpath("//tr[@class = 'acl-page-funds__tree-list-isin-row']//td[@data-grid-col-index = '0']"));
+            String searchFundName = shareClassFundName.get(n).getText();
+            List<WebElement> filterFields = driver.findElements(By.xpath("//td[@aria-label='Filter']"));
+            action.sendKeys(filterFields.get(0),searchFundName).perform();
+            Thread.sleep(2000);
+            WebElement afterSearch = driver.findElement(By.xpath("//tr[@class = 'acl-page-funds__tree-list-isin-row']//td[@data-grid-col-index = '0']"));
+            Assertions.assertEquals(searchFundName, afterSearch.getText());
+
+            driver.navigate().refresh();
+            Thread.sleep(2000);
+
+            List<WebElement> shareClassISIN = driver.findElements(By.xpath("//tr[@class = 'acl-page-funds__tree-list-isin-row']//td[@data-grid-col-index = '1']"));
+            String searchISIN = shareClassISIN.get(n).getText();
+            WebElement isinField = driver.findElement(By.xpath("//input[@id =':rc:']"));
+            action.sendKeys(isinField,searchISIN).perform();
+            Thread.sleep(2000);
+            WebElement afterSearch1 = driver.findElement(By.xpath("//tr[@class = 'acl-page-funds__tree-list-isin-row']//td[@data-grid-col-index = '1']"));
+            Assertions.assertEquals(searchISIN, afterSearch1.getText());
+
+            driver.navigate().refresh();
+            Thread.sleep(2000);
+
+            List<WebElement> shareClassNETValue = driver.findElements(By.xpath("//tr[@class = 'acl-page-funds__tree-list-isin-row']//td[@data-grid-col-index = '3']"));
+            String searchNETValue = shareClassNETValue.get(n).getText();
+            WebElement NETValueField = driver.findElement(By.xpath("//input[@id =':rg:']"));
+            if(!searchNETValue.isEmpty()) {
+                action.sendKeys(NETValueField, searchNETValue).perform();
+                Thread.sleep(2000);
+                WebElement afterSearch2 = driver.findElement(By.xpath("//tr[@class = 'acl-page-funds__tree-list-isin-row']//td[@data-grid-col-index = '3']"));
+                Assertions.assertEquals(searchNETValue, afterSearch2.getText());
+            }
+        }
 }
 
 
