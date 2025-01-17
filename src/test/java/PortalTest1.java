@@ -8,9 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
-import java.util.Arrays;
 import java.util.List;
-import org.openqa.selenium.Keys;
 import java.time.Duration;
 
 
@@ -33,12 +31,12 @@ public class PortalTest1 {
             File dir = new File(downloadPath);
             File[] dirContents = dir.listFiles();
             if (dirContents != null) {
-            for(int i =0;i<dirContents.length;i++){
-                if(dirContents[i].getName().contains(fileName)){
-                    dirContents[i].delete();
-                    return true;
+                for (File dirContent : dirContents) {
+                    if (dirContent.getName().contains(fileName)) {
+                        dirContent.delete();
+                        return true;
+                    }
                 }
-              }
             }
             return false;
         }
@@ -187,10 +185,9 @@ public class PortalTest1 {
         }
 
         //@Test //9. Testing of funds/anyshareClass> Overview page if it is working
-        void shareClassTestOverview() throws InterruptedException {
+        void shareClassTestOverview() {
             boolean check = false;
             Actions action = new Actions(driver);
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             logIn();
             WebElement funds = driver.findElement(By.xpath("//a[text() = 'Funds']"));
             funds.click();
@@ -256,9 +253,7 @@ public class PortalTest1 {
             Thread.sleep(1000);
             WebElement placeholder = driver.findElement(By.id(":rp:"));
 
-            if(placeholder.getAttribute("size").equals("1")){
-                Assertions.assertTrue(true);
-            }else {Assertions.assertTrue(false);}
+            Assertions.assertTrue(placeholder.getAttribute("size").equals("1"));
 
             action.moveToElement(buttons.get(2)).click().perform();
             Thread.sleep(1200);
