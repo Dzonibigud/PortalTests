@@ -16,7 +16,7 @@ import java.util.List;
 
 public class fundPublicationTest {
     WebDriver driver;
-    private static final String BASE_URL = "https://stage.fundpublications.com/";
+    private static final String BASE_URL = "https://fundpublications.com/";
 
     @BeforeEach
     void setUP(){
@@ -57,12 +57,13 @@ public class fundPublicationTest {
             for(int j=0;j< tabList.size();j++){
                 WebElement t = driver.findElements(By.xpath("//div[@class='SzIzgxeetVRZlB1UHWk5 ZZfYqpmGJ8Uz6r5QIwA7']//a")).get(j);
                 action.moveToElement(t).click().perform();
+                //System.out.println(t.getCssValue("clientHeight"));
+                //System.out.println(t.getCssValue("clientWidth"));
                 Assertions.assertTrue(driver.getPageSource().contains(t.getText()));
             }
             driver.navigate().back();driver.navigate().back();driver.navigate().back();
         }
     }
-
 }
 /* for(WebElement sc: shareClasses){
             action.moveToElement(sc).click().perform();
