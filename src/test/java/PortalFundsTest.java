@@ -20,7 +20,6 @@ public class PortalFundsTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         portalPage.openFundsTab();
-        Allure.step("Opening Funds Tab");
         String actualURL = driver.getCurrentUrl();
         String expectedURL = "https://stage.portal.acolin.com/funds";
         Assertions.assertEquals(expectedURL, actualURL);
@@ -34,7 +33,6 @@ public class PortalFundsTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
-        Allure.step("Clicking on collapse button");
         fundsPage.collapseAllButton();
         Assertions.assertTrue(fundsPage.isCollapseButtonClicked());
         Allure.step("✅ User successfully collapsed shareClasses by clicking on Collapse Button.");
@@ -46,7 +44,6 @@ public class PortalFundsTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
-        Allure.step("Clicking on back to top button");
         fundsPage.backToTopButton();
         Assertions.assertTrue(fundsPage.isBackToTopButtonDisplayed());
         Allure.step("✅ User successfully gets back to top of the page after clicking on Back to Top Button.");
@@ -59,7 +56,6 @@ public class PortalFundsTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
-        Allure.step("Typing into fund name search field");
         fundsPage.checkFundNameFilter();
         Assertions.assertTrue(fundsPage.numberOfShareClasses());
         Allure.step("✅ User gets desired Fund Name after searching in Fund name field");
@@ -71,7 +67,6 @@ public class PortalFundsTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
-        Allure.step("Typing into ISIN search field");
         fundsPage.checkISINFilter();
         Assertions.assertTrue(fundsPage.numberOfShareClasses());
         Allure.step("✅ User gets desired ISIN number after searching in ISIN field");
@@ -83,7 +78,6 @@ public class PortalFundsTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
-        Allure.step("Typing into fundName field with a bad/wrong input");
         fundsPage.checkBadInput();
         Assertions.assertTrue(fundsPage.isThereAnyRecords());
         Allure.step("✅ User gets desired text prompt after searching with wrong/bad parameters");
@@ -95,7 +89,6 @@ public class PortalFundsTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
-        Allure.step("Clicking on First Share Class");
         fundsPage.openShareClass();
         Assertions.assertTrue(driver.getCurrentUrl().contains("share-classes"));
         Allure.step("✅ User gets redirected to the Share Class");

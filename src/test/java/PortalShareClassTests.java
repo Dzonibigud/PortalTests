@@ -18,7 +18,6 @@ public class PortalShareClassTests extends BaseTest {
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
         ShareClasses shareClasses = fundsPage.openShareClass();
-        Allure.step("Clicking on first share class and checking overview page");
         Assertions.assertTrue(shareClasses.openOverview());
         Allure.step("✅ Overview Page displays all titles like Details/ Key Facts/ Representatives and Fees ");
     }
@@ -31,7 +30,6 @@ public class PortalShareClassTests extends BaseTest {
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
         ShareClasses shareClasses = fundsPage.openShareClass();
-        Allure.step("Clicking on the documents tab");
         shareClasses.openDocumentsTab();
         Assertions.assertTrue(driver.getCurrentUrl().contains("documents"));
         Allure.step("✅ Documents Page is opened and correct url is displayed ");
@@ -45,9 +43,9 @@ public class PortalShareClassTests extends BaseTest {
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
         ShareClasses shareClasses = fundsPage.openShareClass();
-        Allure.step("Clicking on Country Filter and clicking on first country");
         shareClasses.openDocumentsTab();
         shareClasses.countryFilterFunctionality();
+        Allure.step("Clicking on Country Filter and clicking on first country");
         Assertions.assertTrue(shareClasses.hasOneCountry());
         Allure.step("✅ Only one country is displayed");
     }
@@ -60,7 +58,6 @@ public class PortalShareClassTests extends BaseTest {
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
         ShareClasses shareClasses = fundsPage.openShareClass();
-        Allure.step("Clicking on Type Filter and clicking on first type");
         shareClasses.openDocumentsTab();
         shareClasses.typeFilterFunctionality();
         shareClasses.filterTypePresent();
@@ -80,7 +77,6 @@ public class PortalShareClassTests extends BaseTest {
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
         ShareClasses shareClasses = fundsPage.openShareClass();
-        Allure.step("Clicking on the NAV History tab");
         shareClasses.openNAVTab();
         Assertions.assertTrue(driver.getCurrentUrl().contains("nav-history"));
         Allure.step("✅ NAV History tab is opened and correct url is displayed ");
@@ -93,7 +89,6 @@ public class PortalShareClassTests extends BaseTest {
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
         ShareClasses shareClasses = fundsPage.openShareClass();
-        Allure.step("Clicking on the Distribution tab");
         shareClasses.openDistributionTab();
         Assertions.assertTrue(driver.getCurrentUrl().contains("distribution"));
         Allure.step("✅ Distribution tab is opened and correct url is displayed ");
@@ -107,7 +102,6 @@ public class PortalShareClassTests extends BaseTest {
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
         ShareClasses shareClasses = fundsPage.openShareClass();
-        Allure.step("Clicking on the Export button on NAV History tab");
         shareClasses.openNAVTab();
         shareClasses.clickOnExportButtonOnNavHistory();
         Thread.sleep(1500);
@@ -123,7 +117,6 @@ public class PortalShareClassTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
-        Allure.step("Clicking on filter and typeing 'a'");
         ShareClasses shareClasses = fundsPage.openShareClass();
         shareClasses.openDistributionTab();
         int before = shareClasses.getCountiresSize();
