@@ -31,7 +31,7 @@ public class FundsPage extends BasePage {
 
     //konstruktor
     public FundsPage(WebDriver driver) {
-        super(driver,5);
+        super(driver, 5);
         PageFactory.initElements(driver, this);
     }
 
@@ -91,7 +91,7 @@ public class FundsPage extends BasePage {
     }
 
     public boolean isThereAnyRecords() {
-       return noRecordsFound.getText().equals("No records available");
+        return noRecordsFound.getText().equals("No records available");
     }
 
     public boolean isBackToTopButtonDisplayed() {

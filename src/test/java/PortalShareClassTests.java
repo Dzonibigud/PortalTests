@@ -10,9 +10,11 @@ import utilities.ConfigReader;
 @Epic("Share Classes")
 @Feature("Share Class page Functionality")
 public class PortalShareClassTests extends BaseTest {
-    @Test@Story("Share Class Overview Page")
+    @Test
+    @Story("Share Class Overview Page")
     @Description("Test verifies that overview page contains all key titles like Details/ Key Facts/ Representatives and Fees")
-    @Severity(SeverityLevel.NORMAL)@Tag("Regression")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
     void overviewTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
@@ -22,9 +24,11 @@ public class PortalShareClassTests extends BaseTest {
         Allure.step("✅ Overview Page displays all titles like Details/ Key Facts/ Representatives and Fees ");
     }
 
-    @Test @Story("Documents page in Share Class")
+    @Test
+    @Story("Documents page in Share Class")
     @Description("Test verifies that documents page opens and displays valid url")
-    @Severity(SeverityLevel.NORMAL) @Tag("Regression")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
     void documentsTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
@@ -36,8 +40,10 @@ public class PortalShareClassTests extends BaseTest {
     }
 
     @Test
-    @Story("Country Filter on documents page") @Description("Test verifies that country filter works as expected")
-    @Severity(SeverityLevel.NORMAL) @Tag("Regression")
+    @Story("Country Filter on documents page")
+    @Description("Test verifies that country filter works as expected")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
     void countryFilterTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
@@ -50,8 +56,10 @@ public class PortalShareClassTests extends BaseTest {
         Allure.step("✅ Only one country is displayed");
     }
 
-    @Test @Story("Type Filter on documents page")
-    @Description("Test verifies that type filter works as expected") @Severity(SeverityLevel.NORMAL)
+    @Test
+    @Story("Type Filter on documents page")
+    @Description("Test verifies that type filter works as expected")
+    @Severity(SeverityLevel.NORMAL)
     @Tag("Regression")
     void typeFilterTest() {
         LoginPage loginPage = new LoginPage(driver);
@@ -69,9 +77,12 @@ public class PortalShareClassTests extends BaseTest {
         System.out.println(shareClasses.filterTypePresent());
         Allure.step("✅ Only one type is displayed");
     }
-    @Test @Story("NAV History page in Share Class")
+
+    @Test
+    @Story("NAV History page in Share Class")
     @Description("Test verifies that NAV History page opens and displays valid url")
-    @Severity(SeverityLevel.NORMAL)@Tag("Regression")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
     void navHistoryTabTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
@@ -81,9 +92,12 @@ public class PortalShareClassTests extends BaseTest {
         Assertions.assertTrue(driver.getCurrentUrl().contains("nav-history"));
         Allure.step("✅ NAV History tab is opened and correct url is displayed ");
     }
-    @Test @Story("Distribution page in Share Class")
+
+    @Test
+    @Story("Distribution page in Share Class")
     @Description("Test verifies that Distribution page opens and displays valid url")
-    @Severity(SeverityLevel.NORMAL) @Tag("Regression")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
     void distributionTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
@@ -93,10 +107,13 @@ public class PortalShareClassTests extends BaseTest {
         Assertions.assertTrue(driver.getCurrentUrl().contains("distribution"));
         Allure.step("✅ Distribution tab is opened and correct url is displayed ");
     }
-    @Test @Story("Export button in NAV History page in Share Class")
+
+    @Test
+    @Story("Export button in NAV History page in Share Class")
     @Description("Test verifies that export button works and the file is downloaded on " +
             "NAV History page ")
-    @Severity(SeverityLevel.NORMAL) @Tag("Regression")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
     void exportNAVTest() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
@@ -106,14 +123,16 @@ public class PortalShareClassTests extends BaseTest {
         shareClasses.clickOnExportButtonOnNavHistory();
         Thread.sleep(1500);
         WebElement check = driver.findElement(By.xpath("//span[@class='acl-page-share-class__isin']"));
-        Assertions.assertTrue(shareClasses.isFileDownloaded(Constants.DOWNLOAD_PATH,check.getText()));
+        Assertions.assertTrue(shareClasses.isFileDownloaded(Constants.DOWNLOAD_PATH, check.getText()));
         Allure.step("✅ Export Button is clicked and file is downloaded");
     }
+
     @Test
-    @Story("Distribution filter test in Share Class")@Severity(SeverityLevel.NORMAL)
+    @Story("Distribution filter test in Share Class")
+    @Severity(SeverityLevel.NORMAL)
     @Description("Test verifies that filter on Distribution page works as expected")
     @Tag("Regression")
-    void filterDistributionTest(){
+    void filterDistributionTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         FundsPage fundsPage = portalPage.openFundsTab();
@@ -122,7 +141,7 @@ public class PortalShareClassTests extends BaseTest {
         int before = shareClasses.getCountiresSize();
         shareClasses.filterCointriesDistributionTab();
         int after = shareClasses.getCountiresSize();
-        Assertions.assertTrue(before>after);
+        Assertions.assertTrue(before > after);
         Allure.step("✅ Only countries that start with a letter 'a' are displayed");
     }
 }

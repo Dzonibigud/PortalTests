@@ -19,7 +19,7 @@ public class PortalPage extends BasePage {
 
 
     public PortalPage(WebDriver driver) {
-        super(driver,14);
+        super(driver, 14);
         PageFactory.initElements(driver, this);
     }
 
@@ -34,14 +34,16 @@ public class PortalPage extends BasePage {
         wait.until(ExpectedConditions.textToBe(By.xpath("//h3"), "Fund Universe"));
         return new FundsPage(driver);
     }
+
     @Step("Opening Distribution Dashboard tab on home page")
-    public DistributionDashboardPage openDistributionDashboardTab(){
+    public DistributionDashboardPage openDistributionDashboardTab() {
         tabs.get(1).click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("k-loading-image")));
         return new DistributionDashboardPage(driver);
     }
+
     @Step("Opening Distribution Network tab on home page")
-    public DistributionNetworkPage openDistributionNetworkTab(){
+    public DistributionNetworkPage openDistributionNetworkTab() {
         tabs.get(2).click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("k-loading-image")));
         return new DistributionNetworkPage(driver);

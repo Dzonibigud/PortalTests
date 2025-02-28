@@ -25,7 +25,7 @@ public class BaseTest {
 
     @AfterEach
     public void tearDown() {
-        byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(screenshot));
         WebDriverFactory.quitDriver();
     }

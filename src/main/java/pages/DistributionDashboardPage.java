@@ -6,9 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.List;
 
-public class DistributionDashboardPage extends BasePage{
+public class DistributionDashboardPage extends BasePage {
 
     @FindBy(xpath = "//button[@type='button']")
     private List<WebElement> buttons;
@@ -18,41 +19,47 @@ public class DistributionDashboardPage extends BasePage{
     private List<WebElement> selected;
 
 
-
     public DistributionDashboardPage(WebDriver driver) {
-        super(driver,5);
+        super(driver, 5);
         PageFactory.initElements(driver, this);
     }
 
     @Step("Click on Show Filters button")
-    public void showFiltersButton(){
+    public void showFiltersButton() {
         waitAndClick(buttons.get(0));
     }
-    public void hideNetworkButton(){
+
+    public void hideNetworkButton() {
         waitAndClick(buttons.get(1));
     }
-    public void clickOnShowQuartersButton(){
+
+    public void clickOnShowQuartersButton() {
         moveToElement(buttons.get(4));
         buttons.get(4).click();
     }
-    public void clickOnExportButton(){
+
+    public void clickOnExportButton() {
         waitAndClick(buttons.get(2));
     }
 
-    public String getFilterButtonText(){
+    public String getFilterButtonText() {
         return buttons.get(0).getText();
     }
-    public String getNetworkButtonText(){
+
+    public String getNetworkButtonText() {
         return buttons.get(1).getText();
     }
-    public String getShowQuartersButtonText(){
+
+    public String getShowQuartersButtonText() {
         return buttons.get(4).getText();
     }
+
     @Override
     public boolean isFileDownloaded(String downloadPath, String fileName) {
         return super.isFileDownloaded(downloadPath, fileName);
     }
-    public void filterISIN(){
+
+    public void filterISIN() {
 //        for(int i =0;i<placeHolders.size();i++){
 //            moveToElement(placeHolders.get(i));
 //            placeHolders.get(i).click();
@@ -62,14 +69,17 @@ public class DistributionDashboardPage extends BasePage{
         placeHolders.get(3).click();
         action.sendKeys(Keys.ENTER, Keys.DOWN, Keys.ENTER, Keys.ESCAPE).perform();
     }
-    public String getISINText(){
+
+    public String getISINText() {
         return selected.get(0).getText();
     }
-    public void clickOnResetFilter(){
+
+    public void clickOnResetFilter() {
         moveToElement(buttons.get(3));
         buttons.get(3).click();
     }
-    public int getSlectedSize(){
+
+    public int getSlectedSize() {
         return selected.size();
     }
 }

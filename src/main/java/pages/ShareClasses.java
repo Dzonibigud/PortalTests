@@ -49,16 +49,19 @@ public class ShareClasses extends BasePage {
     public void openDocumentsTab() {
         waitAndClick(tabs.get(1));
     }
+
     @Step("Clicking on NAV History tab")
-    public void openNAVTab(){
+    public void openNAVTab() {
         waitAndClick(tabs.get(2));
     }
+
     @Step("Clicking on Distribution Tab")
-    public void openDistributionTab(){
+    public void openDistributionTab() {
         waitAndClick(tabs.get(3));
     }
+
     @Step("Clicking on Export.xlsx")
-    public void clickOnExportButtonOnNavHistory(){
+    public void clickOnExportButtonOnNavHistory() {
         waitAndClick(exportButton);
     }
 
@@ -72,17 +75,19 @@ public class ShareClasses extends BasePage {
     public void typeFilterFunctionality() {
         action.moveToElement(filters.get(2)).click().sendKeys(Keys.ENTER).sendKeys(Keys.ESCAPE).perform();
     }
+
     @Step("Clicking on filter and searching for countries that start with a letter A")
-    public void filterCointriesDistributionTab(){
+    public void filterCointriesDistributionTab() {
         waitAndClick(distributionFilter);
         action.sendKeys(distributionFilter, "a").perform();
     }
 
 
     public boolean hasOneCountry() {
-        return  countries.size() == 1;
+        return countries.size() == 1;
     }
-    public int getCountiresSize(){
+
+    public int getCountiresSize() {
         return countries.size();
     }
 

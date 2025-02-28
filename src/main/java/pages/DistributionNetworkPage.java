@@ -30,48 +30,57 @@ public class DistributionNetworkPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void selectContinent(){
+    public void selectContinent() {
         placeHolders.get(0).click();
-        action.sendKeys(Keys.ENTER,Keys.ESCAPE).perform();
+        action.sendKeys(Keys.ENTER, Keys.ESCAPE).perform();
     }
-    public void selectCountries(){
+
+    public void selectCountries() {
         placeHolders.get(1).click();
-        action.sendKeys(Keys.ENTER,Keys.ESCAPE).perform();
+        action.sendKeys(Keys.ENTER, Keys.ESCAPE).perform();
     }
-    public void searchForCity(){
+
+    public void searchForCity() {
         placeHolders.get(2).click();
         action.sendKeys("Geneva").perform();
     }
-    public void searchForDistributor(){
+
+    public void searchForDistributor() {
         placeHolders.get(3).click();
         action.sendKeys("Erste").perform();
     }
 
-    public void selectRelationshipStatus(){
+    public void selectRelationshipStatus() {
         placeHolders.get(4).click();
-        action.sendKeys(Keys.DOWN, Keys.ENTER,Keys.ESCAPE).perform();
-    }
-    public void selectCategory(){
-        placeHolders.get(5).click();
-        action.sendKeys(Keys.DOWN,Keys.DOWN, Keys.ENTER,Keys.ESCAPE).perform();
+        action.sendKeys(Keys.DOWN, Keys.ENTER, Keys.ESCAPE).perform();
     }
 
-    public int getNumOfCountries(){
+    public void selectCategory() {
+        placeHolders.get(5).click();
+        action.sendKeys(Keys.DOWN, Keys.DOWN, Keys.ENTER, Keys.ESCAPE).perform();
+    }
+
+    public int getNumOfCountries() {
         return plusExpandable.size();
     }
-    public String getCountriesText(){
+
+    public String getCountriesText() {
         return countries.get(0).getText();
     }
-    public int getNumOfCities(){
+
+    public int getNumOfCities() {
         return cityFilter.size();
     }
-    public String getDistributionPartnersText(){
+
+    public String getDistributionPartnersText() {
         return distributionPartners.get(0).getText();
     }
-    public String getStatusText(){
+
+    public String getStatusText() {
         return status.get(0).getText();
     }
-    public String getCategoryText(){
+
+    public String getCategoryText() {
         return categories.get(0).getText();
     }
 }

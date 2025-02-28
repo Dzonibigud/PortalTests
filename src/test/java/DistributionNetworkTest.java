@@ -12,9 +12,12 @@ import utilities.ConfigReader;
 @Feature("Distribution Network Tab Functionality")
 public class DistributionNetworkTest extends BaseTest {
 
-    @Test @Story("Distribution Network Tab landing page TEST")
-    @Description("Test verifies that Distribution Network Tab opens") @Severity(SeverityLevel.NORMAL)
-    @Tag("Regression") @Tag("Smoke")
+    @Test
+    @Story("Distribution Network Tab landing page TEST")
+    @Description("Test verifies that Distribution Network Tab opens")
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
+    @Tag("Smoke")
     void DistributionNetworkOpenTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
@@ -25,11 +28,12 @@ public class DistributionNetworkTest extends BaseTest {
         Allure.step("✅ Distribution Network page opened and correct url is displayed ");
     }
 
-    @Test @Story("Distribution Network Tab continent filter TEST")
+    @Test
+    @Story("Distribution Network Tab continent filter TEST")
     @Description("Test verifies that Distribution Network Continent filter works as expected")
     @Severity(SeverityLevel.NORMAL)
     @Tag("Regression")
-    void DistNetworkContinentTest(){
+    void DistNetworkContinentTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         DistributionNetworkPage netPage = portalPage.openDistributionNetworkTab();
@@ -40,10 +44,13 @@ public class DistributionNetworkTest extends BaseTest {
         Assertions.assertTrue(numAfter != numBefore);
         Allure.step("✅Continent selected and associated countries displayed");
     }
-    @Test @Story("Distribution Network Tab Countries filter TEST")
+
+    @Test
+    @Story("Distribution Network Tab Countries filter TEST")
     @Description("Test verifies that Distribution Network Countries filter works as expected")
-    @Severity(SeverityLevel.NORMAL) @Tag("Regression")
-    void DistNetworkCountriesTest(){
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
+    void DistNetworkCountriesTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         DistributionNetworkPage netPage = portalPage.openDistributionNetworkTab();
@@ -52,47 +59,59 @@ public class DistributionNetworkTest extends BaseTest {
         Assertions.assertEquals("Austria", netPage.getCountriesText());
         Allure.step("✅Continent selected and associated countries displayed");
     }
-    @Test @Story("Distribution Network Tab City filter TEST")
+
+    @Test
+    @Story("Distribution Network Tab City filter TEST")
     @Description("Test verifies that Distribution Network City filter works as expected")
-    @Severity(SeverityLevel.NORMAL)@Tag("Regression")
-    void DistNetworkCityFilterTest(){
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
+    void DistNetworkCityFilterTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         DistributionNetworkPage netPage = portalPage.openDistributionNetworkTab();
         Allure.step("Clicking on distribution network City filter, and writing 'Geneva'");
         netPage.searchForCity();
-        Assertions.assertTrue(netPage.getNumOfCities()>0);
+        Assertions.assertTrue(netPage.getNumOfCities() > 0);
         Allure.step("✅We get all geneva cities under City filter");
     }
-    @Test @Story("Distribution Network Tab Distributor/Sub-Distributor filter TEST")
+
+    @Test
+    @Story("Distribution Network Tab Distributor/Sub-Distributor filter TEST")
     @Description("Test verifies that Distribution Network Distributor/Sub-Distributor filter works as expected")
-    @Severity(SeverityLevel.NORMAL)@Tag("Regression")
-    void DistNetworkDistributorFilterTest(){
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
+    void DistNetworkDistributorFilterTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         DistributionNetworkPage netPage = portalPage.openDistributionNetworkTab();
         Allure.step("Clicking on distribution network Distributor/Sub-Distributor filter,and writing 'Erste'");
         netPage.searchForDistributor();
-        Assertions.assertTrue(netPage.getNumOfCities()>0 && netPage.getDistributionPartnersText().equals("Erste Group Bank AG"));
+        Assertions.assertTrue(netPage.getNumOfCities() > 0 && netPage.getDistributionPartnersText().equals("Erste Group Bank AG"));
         Allure.step("✅We get Erste distributors under Distributor Partner filter");
     }
-    @Test @Story("Distribution Network Tab Relationship Status filter TEST")
+
+    @Test
+    @Story("Distribution Network Tab Relationship Status filter TEST")
     @Description("Test verifies that Distribution Network Relationship Status filter works as expected")
-    @Severity(SeverityLevel.NORMAL)@Tag("Regression")
-    void DistNetworkRelationshipStatusFilterTest(){
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
+    void DistNetworkRelationshipStatusFilterTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         DistributionNetworkPage netPage = portalPage.openDistributionNetworkTab();
         Allure.step("Clicking on distribution network Relationship Status filter,and selecting 'Available'");
         netPage.selectRelationshipStatus();
         Assertions.assertEquals(driver.findElement
-                (By.xpath("//div[@class='css-9jq23d']")).getText(),netPage.getStatusText());
+                (By.xpath("//div[@class='css-9jq23d']")).getText(), netPage.getStatusText());
         Allure.step("✅We get all Available Statuses");
     }
-    @Test@Story("Distribution Network Tab Category filter TEST")
+
+    @Test
+    @Story("Distribution Network Tab Category filter TEST")
     @Description("Test verifies that Distribution Network Category filter works as expected")
-    @Severity(SeverityLevel.NORMAL)@Tag("Regression")
-    void DistNetworkCategoryFilterTest(){
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("Regression")
+    void DistNetworkCategoryFilterTest() {
         LoginPage loginPage = new LoginPage(driver);
         PortalPage portalPage = loginPage.login(ConfigReader.getProperty("email"), ConfigReader.getProperty("password"));
         DistributionNetworkPage netPage = portalPage.openDistributionNetworkTab();
