@@ -14,10 +14,10 @@ public class BasePage {
     protected WebDriverWait wait;
     protected Actions action;
 
-    public BasePage(WebDriver driver) {
+    public BasePage(WebDriver driver, int waitTimeInSeconds) {
         this.driver = driver;
         this.action = new Actions(driver);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
     }
 
     protected void waitAndClick(WebElement element) {
@@ -39,6 +39,7 @@ public class BasePage {
     protected void moveToElement(WebElement element) {
         action.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(element))).perform();
     }
+
     protected boolean isFileDownloaded(String downloadPath, String fileName) {
         File dir = new File(downloadPath);
         File[] dirContents = dir.listFiles();

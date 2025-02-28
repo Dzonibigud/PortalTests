@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.Constants;
 
 import java.io.File;
 import java.time.Duration;
@@ -32,7 +33,7 @@ public class PortalTest1 {
         WebElement emailField = driver.findElement(By.xpath("//input[@name='email']"));
         action.sendKeys(emailField, "nikola.jankovic@acolin.com").perform();
         WebElement passwordField = driver.findElement(By.xpath("//input[@name='password']"));
-        action.sendKeys(passwordField, "").perform();
+        action.sendKeys(passwordField, "kobe7892").perform();
         WebElement signInButton = driver.findElement(By.xpath("//button[text()='Sign In']"));
         signInButton.click();
     }
@@ -455,5 +456,20 @@ public class PortalTest1 {
         Assertions.assertEquals("ascending", row.get(1).getAttribute("aria-sort"));
         row.get(1).click();
         Assertions.assertEquals("descending", row.get(1).getAttribute("aria-sort"));
+    }
+
+    @Test
+    void uploadFileTest() throws InterruptedException {
+        Actions action = new Actions(driver);
+        logIn();
+        WebElement staticData = driver.findElement(By.xpath("//a[text()='Static Data']"));
+        action.moveToElement(staticData).perform();
+        staticData.click();
+        Thread.sleep(2000);
+        WebElement fileUpload = driver.findElement(By.xpath("//input[@name='file']"));
+        Thread.sleep(4000);
+        fileUpload.sendKeys(Constants.TEST_FILE_PATH_XLSX);
+        WebElement upload = driver.findElement(By.xpath("//button[text()='Upload']"));
+        upload.click();
     }
 }

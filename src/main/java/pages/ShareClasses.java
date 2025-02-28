@@ -18,7 +18,7 @@ public class ShareClasses extends BasePage {
     private List<WebElement> tabs;
     @FindBy(xpath = "//summary")
     private List<WebElement> countries;
-    @FindBy(xpath = "//input[@class='k-input-inner']")
+    @FindBy(xpath = "//div[@class='css-ej4lv7-control']")
     private List<WebElement> filters;
     @FindBy(xpath = "//h5[@class='acl-share-class-documents__type-title']")
     private List<WebElement> types;
@@ -29,7 +29,7 @@ public class ShareClasses extends BasePage {
 
 
     public ShareClasses(WebDriver driver) {
-        super(driver);
+        super(driver, 5);
         PageFactory.initElements(driver, this);
     }
 

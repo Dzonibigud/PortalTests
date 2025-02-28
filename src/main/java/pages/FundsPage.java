@@ -13,6 +13,7 @@ import java.util.List;
 
 public class FundsPage extends BasePage {
 
+    //Pronalazenje web lokatora
     @FindBy(xpath = "//button[text()= 'Collapse all']")
     private WebElement collapseAllButton;
     @FindBy(xpath = "//span[@class='k-icon k-svg-icon k-svg-i-caret-alt-right k-treelist-toggle']")
@@ -28,8 +29,9 @@ public class FundsPage extends BasePage {
     @FindBy(xpath = "//div[@class = 'acl-back-to-top acl-back-to-top--show']")
     private List<WebElement> backToTopButton;
 
+    //konstruktor
     public FundsPage(WebDriver driver) {
-        super(driver);
+        super(driver,5);
         PageFactory.initElements(driver, this);
     }
 

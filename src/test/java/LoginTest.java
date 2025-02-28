@@ -9,8 +9,7 @@ import utilities.ConfigReader;
 @Epic("User Authentication")
 @Feature("Login Functionality")
 public class LoginTest extends BaseTest {
-    @Test
-    @Story("Invalid Login")
+    @Test @Story("Invalid Login")
     @Description("Test verifies that a user with invalid credentials will get an error message.")
     @Severity(SeverityLevel.CRITICAL)
     @Step("Executing invalidLogin")
